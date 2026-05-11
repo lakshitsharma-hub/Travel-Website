@@ -285,8 +285,14 @@ html, body {
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="premium-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1594102552386-793e5a27ad10?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1hbmFsaXxlbnwwfHwwfHx8MA%3D%3D" class="img-fluid" alt="Manali">
-                    </div>
+    <div class="destination-slideshow" id="manali-slideshow">
+        <img src="{{ url_for('static', filename='manali-1.jpg') }}" class="slide active">
+        <img src="{{ url_for('static', filename='manali-2.jpg') }}" class="slide">
+        <img src="{{ url_for('static', filename='manali-3.jpg') }}" class="slide">
+        <img src="{{ url_for('static', filename='manali-4.jpg') }}" class="slide">
+        <img src="{{ url_for('static', filename='manali-5.jpg') }}" class="slide">
+    </div>
+</div>
                     <h4 class="fw-bold gold-text">Celestial Manali</h4>
                     <p class="small opacity-75">Private boutique stays, Riverside dining, Hidden waterfalls.</p>
                     <hr class="border-secondary">
