@@ -242,6 +242,60 @@ html, body {
 .destination-slideshow .slide.active {
     opacity: 1;
 }
+        /* Footer Styles */
+.site-footer {
+    background-color: #1a1a1a; /* Dark background */
+    color: #f4f4f4;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+    border-top: 2px solid #d4af37; /* Gold border like your theme */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px; /* Mobile par width manage karega */
+}
+
+.footer-section h4 {
+    color: #d4af37; /* Gold color for headings */
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-section {
+        margin-bottom: 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -429,5 +483,32 @@ initSlideshow('shimla-slideshow');
 initSlideshow('manali-slideshow');
 initSlideshow('spiti-slideshow');
 </script>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>All Himachal Yatra</h4>
+            <p>Your trusted partner for Himalayan adventures.</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Contact Office</h4>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> 
+                New Aggarwal Building, <br>
+                Sanjauli Chowk, Shimla, <br>
+                Himachal Pradesh - 171006
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p>Phone: +91 XXXXX XXXXX</p>
+            <p>Email: info@allhimachalyatra.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 All Himachal Yatra. All Rights Reserved.</p>
+    </div>
+</footer>
 </body>
 </html>
