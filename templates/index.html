@@ -139,6 +139,50 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
         }
+        /* --- MOBILE OPTIMIZATION (Desktop ko chhede bina) --- */
+
+/* 1. Horizontal Scroll Fix: Isse swipe wala chakkar khatam ho jayega */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative;
+}
+
+/* 2. Desktop safe rahega, sirf 991px se choti screens par ye apply hoga */
+@media (max-width: 991px) {
+    /* Mobile par Title ka size sahi karna */
+    .hero h1 { 
+        font-size: clamp(2rem, 10vw, 3.5rem) !important;
+        line-height: 1.2;
+    }
+
+    /* Mobile Menu ko sundar aur readable banana */
+    .navbar-collapse {
+        background: rgba(10, 25, 47, 0.98) !important; /* Dark Navy Background */
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 15px;
+        border: 1px solid rgba(212, 175, 55, 0.2); /* Halka Gold Border */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .nav-item {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    /* Mobile par Logo thoda chota */
+    .navbar-brand {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* 3. Logo aur Hamburger button ko ek hi line mein fix rakhne ke liye */
+.navbar .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
     </style>
 </head>
 <body>
