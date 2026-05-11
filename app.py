@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import requests
 from datetime import datetime
+from flask import send_from_directory
+import os
 
 app = Flask(__name__)
 
@@ -17,7 +19,10 @@ def send_telegram_msg(data):
         requests.post(url, json=payload)
     except Exception as e:
         print("Telegram Error:", e)
-
+# Ye route Google ko sitemap dikhayega
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(os.getcwd(), 'sitemap.xml')
 # Main Website Route
 @app.route('/')
 def home():
