@@ -6,9 +6,9 @@ import os
 
 app = Flask(__name__)
 
-# Aapke Telegram Credentials
-TELEGRAM_TOKEN = "8794826155:AAHvE03jlRXy2ZCzymzqG2lrwVQIo122oyI"
-CHAT_ID = "5249927775"
+# Values Vercel ke dashboard se uthayi jayengi
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+CHAT_ID = os.environ.get('CHAT_ID')
 
 # Telegram Notification Engine
 def send_telegram_msg(data):
