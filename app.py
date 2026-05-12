@@ -7,13 +7,13 @@ import os
 app = Flask(__name__)
 
 # Aapke Telegram Credentials
-TELEGRAM_TOKEN = "7826170047:AAF9V3AglWRI9KdAJ8-aPvFhPbHyLDuwp8Y"
-CHAT_ID = "7148621352"
+TELEGRAM_TOKEN = "8794826155:AAHvE03jlRXy2ZCzymzqG2lrwVQIo122oyI"
+CHAT_ID = "5249927775"
 
 # Telegram Notification Engine
 def send_telegram_msg(data):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    text = f"🏔️ Premium Lead Alert!\n\n👤 Naam: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
+    text = f"🏔️ New Lead Alert!\n\n👤 Name: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
     payload = {"chat_id": CHAT_ID, "text": text}
     try:
         requests.post(url, json=payload)
