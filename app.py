@@ -27,7 +27,9 @@ def static_from_root():
 @app.route('/')
 def home():
     return render_template('index.html')
-
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(os.getcwd(), 'robots.txt')
 # Form Submission Route
 @app.route('/submit', methods=['POST'])
 def submit():
