@@ -223,12 +223,38 @@ html, body {
 #entryModal .form-control::placeholder {
     color: rgba(255, 255, 255, 0.6) !important;
 }
-        .destination-slideshow {
+     /* 1. Baahar wala main dibba */
+.card-img-wrapper {
     position: relative;
-    height: 300px; /* Ya jitni aapko height chahiye */
     width: 100%;
+    height: 250px; /* Isse height lock ho jayegi */
     overflow: hidden;
-    border-radius: 15px; /* Thoda look badhane ke liye */
+    background-color: #1a1a1a; /* Black background agar photo load na ho */
+}
+
+/* 2. Slideshow ka container */
+.destination-slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. Asli Photos ki setting */
+.destination-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ye sabse zaruri hai - image ko poore box mein fill karega */
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* 4. Jo photo dikhni chahiye */
+.destination-slideshow .slide.active {
+    opacity: 1;
+}
 }
 }
 
