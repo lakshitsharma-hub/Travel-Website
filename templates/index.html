@@ -308,6 +308,26 @@ html, body {
         margin-bottom: 20px;
     }
 }
+        #diaries .premium-card {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+}
+
+#diaries .card-img-wrapper {
+    height: 200px;
+}
+
+#diaries .card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#diaries .gold-text:hover {
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -346,6 +366,7 @@ html, body {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link px-3" href="#curated">Curated Experiences</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#diaries">Himalayan Diaries</a></li>
                 <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3" href="#book">Inquire Now</a></li>
             </ul>
         </div>
@@ -412,7 +433,58 @@ html, body {
         </div>
     </div>
 </section>
+<section id="diaries" class="py-5" style="background-color: #050a12;">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-4 fw-bold">Himalayan <span class="gold-text">Diaries</span></h2>
+            <p class="text-muted">Stories from the heart of the mountains.</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="premium-card">
+                    <div class="card-img-wrapper">
+                        <img src="{{ url_for('static', filename='blog-tirthan.webp') }}" class="img-fluid" alt="Tirthan Valley" loading="lazy">
+                    </div>
+                    <div class="p-2 text-start">
+                        <span class="badge mb-2" style="border: 1px solid #D4AF37; color: #D4AF37;">Offbeat</span>
+                        <h5 class="fw-bold mt-2">Tirthan Valley: The Hidden Trout Paradise</h5>
+                        <p class="small opacity-75">Explore why this riverside gem is the perfect escape from city noise...</p>
+                        <a href="#" class="text-decoration-none gold-text small fw-bold">READ STORY →</a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="premium-card">
+                    <div class="card-img-wrapper">
+                        <img src="{{ url_for('static', filename='blog-driving.webp') }}" class="img-fluid" alt="Mountain Driving Tips" loading="lazy">
+                    </div>
+                    <div class="p-2 text-start">
+                        <span class="badge mb-2" style="border: 1px solid #D4AF37; color: #D4AF37;">Guide</span>
+                        <h5 class="fw-bold mt-2">5 Secrets to Master Mountain Driving</h5>
+                        <p class="small opacity-75">Essential tips for a safe and smooth road trip across the Himalayan loops...</p>
+                        <a href="#" class="text-decoration-none gold-text small fw-bold">READ STORY →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="premium-card">
+                    <div class="card-img-wrapper">
+                        <img src="{{ url_for('static', filename='blog-culture.webp') }}" class="img-fluid" alt="Himachali Culture" loading="lazy">
+                    </div>
+                    <div class="p-2 text-start">
+                        <span class="badge mb-2" style="border: 1px solid #D4AF37; color: #D4AF37;">Culture</span>
+                        <h5 class="fw-bold mt-2">The Soul of Himachal: A Taste of Local Dham</h5>
+                        <p class="small opacity-75">Discover the history and flavors behind Himachal's most iconic traditional meal...</p>
+                        <a href="#" class="text-decoration-none gold-text small fw-bold">READ STORY →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="book" class="py-5" style="background: #fff; border-radius: 100px 100px 0 0;">
     <div class="container py-5">
         <div class="row align-items-center">
