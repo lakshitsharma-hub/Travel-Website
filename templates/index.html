@@ -322,7 +322,7 @@ html, body {
     </div>
 </div>
 
-<a href="https://wa.me/917018198370" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/917018198370" class="wa-float" target="_blank" aria-label="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -361,9 +361,9 @@ html, body {
                 <div class="premium-card">
                     <div class="card-img-wrapper">
     <div class="destination-slideshow" id="manali-slideshow">
-        <img src="{{ url_for('static', filename='manali-1.jpeg') }}" class="slide active" alt="Manali Village View">
-        <img src="{{ url_for('static', filename='manali-3.jpg') }}" class="slide" alt="Paragliding in Manali">
-        <img src="{{ url_for('static', filename='manali-4.jpg') }}" class="slide" alt="Hidimba Mata Temple Manali">
+        <img src="{{ url_for('static', filename='manali-1.jpeg') }}" class="slide active" alt="Manali Village View" fetchpriority="high">>
+        <img src="{{ url_for('static', filename='manali-3.jpg') }}" class="slide" alt="Paragliding in Manali" loading="lazy">
+        <img src="{{ url_for('static', filename='manali-4.jpg') }}" class="slide" alt="Hidimba Mata Temple Manali" loading="lazy">
     </div>
 </div>
                     <h4 class="fw-bold gold-text">Celestial Manali</h4>
@@ -375,9 +375,9 @@ html, body {
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="premium-card">
                     <div class="destination-slideshow" id="spiti-slideshow">
-    <img src="{{ url_for('static', filename='spiti-1.jpeg') }}" class="slide active" alt="Spiti Valley">
-    <img src="{{ url_for('static', filename='spiti-2.jpg') }}" class="slide" alt="Maitreya Buddha in Spiti - Ladakh">
-    <img src="{{ url_for('static', filename='spiti-4.jpg') }}" class="slide" alt="Chandra Tal Lake">
+    <img src="{{ url_for('static', filename='spiti-1.jpeg') }}" class="slide active" alt="Spiti Valley" fetchpriority="high">>
+    <img src="{{ url_for('static', filename='spiti-2.jpg') }}" class="slide" alt="Maitreya Buddha in Spiti - Ladakh" loading="lazy">
+    <img src="{{ url_for('static', filename='spiti-4.jpg') }}" class="slide" alt="Chandra Tal Lake" loading="lazy">
 </div>
                     <h4 class="fw-bold gold-text">Mystic Spiti</h4>
                     <p class="small opacity-75">Stargazing at 14k ft, Ancient Monasteries, Luxury Camping.</p>
@@ -388,9 +388,9 @@ html, body {
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="premium-card">
                    <div class="destination-slideshow" id="shimla-slideshow">
-    <img src="{{ url_for('static', filename='shimla-1.jpeg') }}" class="slide active" alt="Christ Church Shimla">
-    <img src="{{ url_for('static', filename='shimla-2.jpg') }}" class="slide" alt="Timber Train Shimla">
-    <img src="{{ url_for('static', filename='shimla-4.jpg') }}" class="slide" alt="Mall Road- The Ridge Shimla">
+    <img src="{{ url_for('static', filename='shimla-1.jpeg') }}" class="slide active" alt="Christ Church Shimla" fetchpriority="high">>
+    <img src="{{ url_for('static', filename='shimla-2.jpg') }}" class="slide" alt="Timber Train Shimla" loading="lazy">
+    <img src="{{ url_for('static', filename='shimla-4.jpg') }}" class="slide" alt="Mall Road- The Ridge Shimla" loading="lazy">
 </div>
                     <h4 class="fw-bold gold-text">Shimla Heritage</h4>
                     <p class="small opacity-75">Vintage Estate Stays, Forest Trails, Colonial Walks.</p>
