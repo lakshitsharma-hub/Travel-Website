@@ -23,6 +23,10 @@ def send_telegram_msg(data):
 @app.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(os.getcwd(), 'sitemap.xml')
+
+@app.route('/blog/tirthan-valley')
+def tirthan_blog():
+    return render_template('tirthan.html')
 # Main Website Route
 @app.route('/')
 def home():
