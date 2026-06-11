@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Soul of Himachal: A Taste of Local Authentic Dham | All Himachal Yatra</title>
+    <meta name="description" content="Discover the rich culinary heritage of Himachali Dham. Learn about the traditional organic feast, botanical leaf plates (Pattal), and local slow-cooking secrets.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #050a12; color: #ffffff; font-family: 'Poppins', sans-serif; }
+        .gold-text { color: #D4AF37; }
+        .blog-header {
+            height: 50vh;
+            background: linear-gradient(rgba(5, 10, 18, 0.7), #050a12), url("{{ url_for('static', filename='blog-culture.avif') }}") no-repeat center center;
+            background-size: cover;
+        }
+        .blog-content { font-size: 1rem; line-height: 1.8; opacity: 0.9; }
+        .btn-luxury { background: transparent; border: 2px solid #D4AF37; color: #D4AF37; font-weight: bold; transition: 0.3s ease; }
+        .btn-luxury:hover { background: #D4AF37; color: #050a12; }
+    </style>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+<body>
+
+    <header class="blog-header d-flex align-items-end">
+        <div class="container pb-5">
+            <span class="badge mb-2" style="border: 1px solid #D4AF37; color: #D4AF37;">CULTURAL HERITAGE</span>
+            <h1 class="display-4 fw-bold">The Soul of Himachal: A Taste of <span class="gold-text">Local Dham</span></h1>
+        </div>
+    </header>
+
+    <article class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 blog-content">
+                
+                <p class="lead">Himachal sirf apne barfani pahaadon ke liye nahi, balki apni anokhi sanskriti aur lajawab khane ke liye bhi jaana jata hai. Agar aap Himachal aaye aur yahan ka paramparik shakahari bhojan — <strong>Dham</strong> nahi khaya, toh aapki yatra adhuri hai. Chaliye jaante hain is shahi daawat ke piche ka itihaas aur swaad.</p>
+
+                <h3 class="fw-bold gold-text mt-5 mb-3">Kya Hoti Hai Himachali Dham?</h3>
+                <p>Dham ek paramparik thali ya feast hai jo tyoharon, shaadiyon aur bade sanskritik utsavon par banayi jaati hai. Iski sabse badi khasiyat ye hai ki isme pyaz, tamatar ya lahsun ka use nahi hota, fir bhi iska swaad bemisaal hota hai. Is pure khane ko zameen ke andar ek gahri khee (Toti/Charoti) mein lakdi ki aag par dhime-dhime pakaya jata hai.</p>
+
+                <h3 class="fw-bold gold-text mt-5 mb-3">Botis aur Pattal: Khane Ka Traditional Tarika</h3>
+                <p>Dham banane wale special chefs ko **Botis** kaha jata hai, jo peedhiyon se chali aa rahi secret recipes se is khane ko taiyar karte hain. Log zameen par ek line (Pangat) mein baithte hain, aur khana patton se bani thaliyon par parosa jata hai jise **Pattal** kehte hain. Yeh tarika ekdum eco-friendly aur organic hai.</p>
+
+                <h3 class="fw-bold gold-text mt-5 mb-3">Dham Ke Mukhya Vyanjan (The Menu)</h3>
+                <p>Alag-alag districts (jaise Kangra, Mandi, Chamba) mein Dham ka menu badal jata hai, par kuch chizen hamesha mukhya hoti hain:</p>
+                <ul>
+                    <li><strong>Madra:</strong> Kabuli chane ya rajma ko dahi aur shahi masalon ke sath dhimi aag par pakaya jata hai.</li>
+                    <li><strong>Khatta:</strong> Amchoor ya imli se bana ek khatta-meetha vyanjan jo digestive system ke liye bahut badhiya hota hai.</li>
+                    <li><strong>Mash ki Dal:</strong> Dhuli urad ki daal jise dhuen (Dhungar system) ka tadka diya jata hai.</li>
+                    <li><strong>Meetha:</strong> Daawat ka anth meethe chawal (Badana ya Seera) ke sath hota hai.</li>
+                </ul>
+
+                <div class="p-4 rounded mt-5 text-center" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);">
+                    <h4 class="fw-bold gold-text">Asli Himachali Culture Ka Anubhav Karein</h4>
+                    <p class="small text-white">Hum apne luxury packages mein local homestays aur authentic Himachali Dham testing sessions ko bhi shamil karte hain.</p>
+                    <a href="/#book" class="btn btn-luxury px-4 py-2 mt-2">Book Your Cultural Tour Now</a>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="/" class="text-decoration-none text-white small fw-bold opacity-100">
+                        <i class="fas fa-arrow-left me-2 gold-text"></i>Back to Home
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+</body>
+</html>
