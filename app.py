@@ -28,6 +28,16 @@ def static_from_root():
 def tirthan_blog():
     return render_template('tirthan.html')
 # Main Website Route
+
+# Mountain Driving Blog Route
+@app.route('/blog/mountain-driving')
+def driving_blog():
+    return render_template('driving.html')
+
+# Himachali Dham Blog Route
+@app.route('/blog/himachali-dham')
+def dham_blog():
+    return render_template('dham.html')
 @app.route('/')
 def home():
     return render_template('index.html')
