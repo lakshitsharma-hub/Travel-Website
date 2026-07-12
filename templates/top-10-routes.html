@@ -10,26 +10,27 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <style>
         :root {
-            --gold: #D4AF37;
-            --dark-navy: #0A192F;
-            --glass: rgba(255, 255, 255, 0.05);
+            --concrete-bg: #F4F5F7;
+            --pure-white: #FFFFFF;
+            --sharp-black: #1A1A1A;
+            --text-grey: #4A5568;
+            --accent-black: #000000;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: #050a12; /* Your Main Theme Dark BG */
-            color: #fff;
+            background-color: var(--concrete-bg);
+            color: var(--text-grey);
             overflow-x: hidden;
         }
 
         h1, h2, h3, .route-number { 
             font-family: 'Playfair Display', serif; 
+            color: var(--sharp-black);
         }
-
-        .gold-text { color: var(--gold); }
 
         .container {
             max-width: 900px;
@@ -39,61 +40,66 @@
 
         header {
             text-align: center;
-            padding: 60px 20px 40px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            margin-bottom: 50px;
+            padding: 70px 20px 50px;
+            margin-bottom: 40px;
+            background: var(--pure-white);
+            border-bottom: 2px solid #E2E8F0;
+            border-radius: 0 0 40px 40px; /* Smooth curved structure */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         h1 {
             margin: 0;
-            font-size: 3rem;
-            color: var(--gold);
+            font-size: 3.2rem;
+            letter-spacing: -1px;
         }
 
-        /* Glassmorphism Premium Card */
+        /* Minimalist Structural Card */
         .route-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: var(--pure-white);
+            border-radius: 20px;
             margin-bottom: 40px;
             overflow: hidden;
-            border-left: 5px solid var(--gold);
-            transition: 0.4s ease;
+            border: 1px solid #E2E8F0;
+            border-left: 6px solid var(--accent-black); /* Sharp black accent */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
         }
 
         .route-card:hover {
-            border-color: var(--gold);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border-color: #CBD5E0;
         }
 
         .route-header {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px 25px;
+            padding: 25px 30px;
             display: flex;
             align-items: center;
+            border-bottom: 1px solid #F0F4F8;
         }
 
         .route-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: bold;
-            color: var(--gold);
-            margin-right: 20px;
+            margin-right: 25px;
             line-height: 1;
+            opacity: 0.9;
         }
 
         .route-header h2 {
             margin: 0;
-            color: #fff;
             font-size: 1.8rem;
         }
 
         .route-content {
-            padding: 25px;
+            padding: 30px;
         }
         
-        .route-intro { opacity: 0.85; }
+        .route-intro { 
+            font-size: 1.05rem; 
+            color: var(--text-grey); 
+        }
 
         .route-specs {
             list-style: none;
@@ -101,62 +107,61 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin: 25px 0;
-            background: rgba(0, 0, 0, 0.4);
+            margin: 30px 0;
+            background: var(--concrete-bg);
             padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            border: 1px dashed #CBD5E0;
         }
 
         .route-specs li {
             font-size: 0.95rem;
-            opacity: 0.9;
         }
         
-        .route-specs strong { color: var(--gold); }
+        .route-specs strong { color: var(--sharp-black); }
 
-        .route-geography { margin-top: 25px; }
-        .route-geography h3 { color: var(--gold); margin-bottom: 15px;}
+        .route-geography { margin-top: 30px; }
+        .route-geography h3 { font-size: 1.3rem; margin-bottom: 15px; }
 
         .route-cta {
-            margin-top: 30px;
+            margin-top: 35px;
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            border-top: 1px solid #E2E8F0;
         }
 
-        /* Match Main Website Button */
+        /* Minimalist Button */
         .btn-luxury {
             display: inline-block;
-            background: var(--dark-navy);
-            color: white;
-            border: 2px solid var(--gold);
+            background: var(--pure-white);
+            color: var(--sharp-black);
+            border: 2px solid var(--sharp-black);
             padding: 12px 35px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .btn-luxury:hover {
-            background: var(--gold);
-            color: var(--dark-navy);
+            background: var(--sharp-black);
+            color: var(--pure-white);
         }
 
         .back-home {
             display: inline-block;
-            margin-bottom: 20px;
-            color: var(--gold);
+            margin-bottom: 25px;
+            color: var(--text-grey);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 2px;
             transition: 0.3s;
         }
         
-        .back-home:hover { color: #fff; }
+        .back-home:hover { color: var(--sharp-black); }
     </style>
 </head>
 <body>
