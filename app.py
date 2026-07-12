@@ -38,6 +38,11 @@ def driving_blog():
 @app.route('/blog/himachali-dham')
 def dham_blog():
     return render_template('dham.html')
+
+# Top 10 Routes Master Guide Route
+@app.route('/blog/top-10-routes')
+def top_routes_blog():
+    return render_template('top-10-routes.html')
 @app.route('/')
 def home():
     return render_template('index.html')
