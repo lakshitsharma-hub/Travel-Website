@@ -10,92 +10,90 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <style>
         :root {
-            --pine-bg: #0D281F;
-            --sunset-rust: #D05B43;
-            --sand-cream: #F5F2EB;
-            --card-white: #FFFFFF;
-            --text-dark: #2A3631;
+            --gold: #D4AF37;
+            --dark-navy: #0A192F;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--sand-cream);
-            color: var(--text-dark);
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            line-height: 1.7;
-            /* Creates a premium textured dotted background using pure CSS */
-            background-image: radial-gradient(rgba(13, 40, 31, 0.08) 1.5px, transparent 1.5px);
-            background-size: 25px 25px;
+            background-color: #050a12; /* Your Main Theme Dark BG */
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        header {
-            background-color: var(--pine-bg);
-            color: var(--card-white);
-            text-align: center;
-            padding: 70px 20px 60px;
-            margin-bottom: 50px;
-            border-bottom: 8px solid var(--sunset-rust);
-            box-shadow: 0 10px 30px rgba(13, 40, 31, 0.2);
+        h1, h2, h3, .route-number { 
+            font-family: 'Playfair Display', serif; 
         }
 
-        h1, h2, h3, .route-number {
-            font-family: 'Playfair Display', serif;
-        }
-
-        header h1 {
-            color: var(--sunset-rust);
-            font-size: 3.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+        .gold-text { color: var(--gold); }
 
         .container {
             max-width: 900px;
             margin: auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
-        .route-card {
-            background: var(--card-white);
-            border-radius: 12px;
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             margin-bottom: 50px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        /* Glassmorphism Premium Card */
+        .route-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 40px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-            border-top: 5px solid var(--pine-bg);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 5px solid var(--gold);
+            transition: 0.4s ease;
         }
 
         .route-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 45px rgba(13, 40, 31, 0.15);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .route-header {
-            background: linear-gradient(to right, #ffffff, #f0ede5);
-            padding: 25px 30px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 25px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #E5E0D5;
         }
 
         .route-number {
-            font-size: 4rem;
-            color: var(--sunset-rust);
-            margin-right: 25px;
-            line-height: 0.8;
-            text-shadow: 1px 1px 0px rgba(208, 91, 67, 0.2);
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-right: 20px;
+            line-height: 1;
         }
 
         .route-header h2 {
             margin: 0;
-            font-size: 1.9rem;
-            color: var(--pine-bg);
+            color: #fff;
+            font-size: 1.8rem;
         }
 
         .route-content {
-            padding: 30px;
+            padding: 25px;
         }
+        
+        .route-intro { opacity: 0.85; }
 
         .route-specs {
             list-style: none;
@@ -103,67 +101,62 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin: 30px 0;
-            background: var(--pine-bg);
-            color: var(--sand-cream);
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.4);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: inset 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .route-specs li {
             font-size: 0.95rem;
             opacity: 0.9;
         }
+        
+        .route-specs strong { color: var(--gold); }
 
-        .route-specs strong {
-            color: var(--sunset-rust);
-            letter-spacing: 0.5px;
-        }
+        .route-geography { margin-top: 25px; }
+        .route-geography h3 { color: var(--gold); margin-bottom: 15px;}
 
         .route-cta {
-            margin-top: 35px;
+            margin-top: 30px;
             text-align: center;
-            padding-top: 25px;
-            border-top: 2px dashed #E5E0D5;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Bold Heritage Button */
+        /* Match Main Website Button */
         .btn-luxury {
             display: inline-block;
-            background: var(--sunset-rust);
-            color: #fff;
-            padding: 14px 40px;
+            background: var(--dark-navy);
+            color: white;
+            border: 2px solid var(--gold);
+            padding: 12px 35px;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            box-shadow: 4px 4px 0px var(--pine-bg);
-            transition: all 0.2s ease;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
         .btn-luxury:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px var(--pine-bg);
-            background: #BA4E38;
-            color: #fff;
+            background: var(--gold);
+            color: var(--dark-navy);
         }
 
         .back-home {
             display: inline-block;
             margin-bottom: 20px;
-            color: var(--sand-cream);
+            color: var(--gold);
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 2px;
-            opacity: 0.8;
             transition: 0.3s;
         }
-
-        .back-home:hover { opacity: 1; color: var(--sunset-rust); }
+        
+        .back-home:hover { color: #fff; }
     </style>
 </head>
 <body>
