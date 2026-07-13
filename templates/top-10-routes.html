@@ -176,6 +176,7 @@
     </style>
 </head>
 <body>
+    <canvas id="snow-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
 
     <header>
         <a href="/" class="back-home">← Back to All Himachal Yatra</a>
@@ -569,6 +570,67 @@
         </article>
 <!=======================================================================================================================>
     </div>
+<script>
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
 
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    // Snowflakes configuration
+    const numFlakes = 75; // Kitne snowflakes chahiye (75 ekdum natural lagta hai)
+    const flakes = [];
+
+    for (let i = 0; i < numFlakes; i++) {
+        flakes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 3 + 1, // Snowflakes ka alag-alag size (1px se 4px)
+            d: Math.random() * numFlakes, // Density
+            speed: Math.random() * 1 + 0.5 // Girne ki speed (Slow aur premium)
+        });
+    }
+
+    function drawFlakes() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.75)'; // Halka transparent white color
+        ctx.beginPath();
+        for (let i = 0; i < numFlakes; i++) {
+            const f = flakes[i];
+            ctx.moveTo(f.x, f.y);
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, True);
+        }
+        ctx.fill();
+        moveFlakes();
+    }
+
+    function moveFlakes() {
+        for (let i = 0; i < numFlakes; i++) {
+            const f = flakes[i];
+            f.y += f.speed;
+            f.x += Math.sin(f.d) * 0.5; // Hawa mein halka sa swing hone ke liye
+
+            // Agar snowflake screen ke bahar chala jaye toh upar se dobara aaye
+            if (f.y > height) {
+                flakes[i] = { x: Math.random() * width, y: -10, r: f.r, d: f.d, speed: f.speed };
+            }
+            if (f.x > width || f.x < 0) {
+                flakes[i].x = Math.random() * width;
+            }
+        }
+    }
+
+    function animate() {
+        drawFlakes();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
 </body>
 </html>
