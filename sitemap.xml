@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- 1. Main Homepage -->
   <url>
-    <loc>https://allhimachalyatra.com/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <loc>https://www.allhimachalyatra.com/</loc>
+    <lastmod>2026-07-13</lastmod>
     <priority>1.0</priority>
   </url>
+
+  <!-- 2. Top 10 Routes Blog -->
+  <url>
+    <loc>https://www.allhimachalyatra.com/blog/top-10-routes</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 3. Tirthan Valley Blog -->
+  <url>
+    <loc>https://www.allhimachalyatra.com/blog/tirthan-valley</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 4. Himachali Dham Blog -->
+  <url>
+    <loc>https://www.allhimachalyatra.com/blog/himachali-dham</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 5. Mountain Driving Blog -->
+  <url>
+    <loc>https://www.allhimachalyatra.com/blog/mountain-driving</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
