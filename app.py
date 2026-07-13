@@ -6,19 +6,37 @@ import os
 
 app = Flask(__name__)
 
-# Values Vercel ke dashboard se uthayi jayengi
+# Bot 1: Values Vercel ke dashboard se uthayi jayengi (Main Production Bot)
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('CHAT_ID')
 
-# Telegram Notification Engine
+# Bot 2: Tumhara naya Personal Test Bot (Hardcoded)
+BOT_TOKEN_2 = "8723340730:AAH4XKX4mq1BIG13YBnPtl6q1EnbQOP2STY"
+CHAT_ID_2 = "7148621352"
+
+# Telegram Notification Engine (Multi-Bot Setup)
 def send_telegram_msg(data):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    # Dono bots ki list
+    bots = [
+        {"token": TELEGRAM_TOKEN, "chat_id": CHAT_ID},
+        {"token": BOT_TOKEN_2, "chat_id": CHAT_ID_2}
+    ]
+    
+    # Message ka format
     text = f"🏔️ New Lead Alert!\n\n👤 Name: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
-    payload = {"chat_id": CHAT_ID, "text": text}
-    try:
-        requests.post(url, json=payload)
-    except Exception as e:
-        print("Telegram Error:", e)
+    
+    # Loop chala kar dono bots ko parallel message bhejna
+    for bot in bots:
+        # Check karna ki token available hai (agar Vercel env missing ho toh error na aaye)
+        if bot["token"] and bot["chat_id"]:
+            url = f"https://api.telegram.org/bot{bot['token']}/sendMessage"
+            payload = {"chat_id": bot["chat_id"], "text": text}
+            try:
+                # Timeout 5 seconds rakha hai taaki page load na atke
+                requests.post(url, json=payload, timeout=5)
+            except Exception as e:
+                print(f"Telegram Error for bot {bot['token'][:10]}... :", e)
+
 # Ye route Google ko sitemap dikhayega
 @app.route('/sitemap.xml')
 def static_from_root():
@@ -27,7 +45,11 @@ def static_from_root():
 @app.route('/blog/tirthan-valley')
 def tirthan_blog():
     return render_template('tirthan.html')
+
 # Main Website Route
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 # Mountain Driving Blog Route
 @app.route('/blog/mountain-driving')
@@ -43,12 +65,11 @@ def dham_blog():
 @app.route('/blog/top-10-routes')
 def top_routes_blog():
     return render_template('top-10-routes.html')
-@app.route('/')
-def home():
-    return render_template('index.html')
+
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(os.getcwd(), 'robots.txt')
+
 # Form Submission Route
 @app.route('/submit', methods=['POST'])
 def submit():
