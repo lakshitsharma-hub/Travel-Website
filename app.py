@@ -10,9 +10,9 @@ app = Flask(__name__)
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('CHAT_ID')
 
-# Bot 2: Tumhara naya Personal Test Bot (Hardcoded)
-BOT_TOKEN_2 = "8723340730:AAH4XKX4mq1BIG13YBnPtl6q1EnbQOP2STY"
-CHAT_ID_2 = "7148621352"
+# Bot 2: Tumhara naya Personal Test Bot (Vercel ENV se aayega)
+BOT_TOKEN_2 = os.environ.get('TELEGRAM_TOKEN_2')
+CHAT_ID_2 = os.environ.get('CHAT_ID_2')
 
 # Telegram Notification Engine (Multi-Bot Setup)
 def send_telegram_msg(data):
