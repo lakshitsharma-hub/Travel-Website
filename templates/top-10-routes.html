@@ -157,6 +157,22 @@
         }
         
         .back-home:hover { color: #fff; }
+        /* Puray page ki images ko ek sath fix karne ke liye */
+.route-img-wrapper {
+    margin: 25px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    height: 350px; /* Height thodi badha di taaki wide photos stretched na lagein */
+    width: 100%;
+}
+
+.route-img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Ye z जबरदस्ती photo ko natural rakhega */
+    object-position: center !important; /* Photo ka center part hi dikhega */
+}
     </style>
 </head>
 <body>
