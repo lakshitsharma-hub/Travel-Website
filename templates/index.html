@@ -356,7 +356,7 @@ html, body {
 
           <form action="/submit" method="POST" onsubmit="if(window.va) { va.track('Inquiry Submitted'); }">
     <input type="text" name="name" class="form-control mb-3 bg-transparent text-white border-gold-input" placeholder="Your Name" aria-label="Your Name" required>
-    <input type="tel" name="phone" class="form-control mb-3 bg-transparent text-white border-gold-input" placeholder="Your Phone Number" aria-label="Phone Number" required>
+    <input type="tel" name="phone" class="form-control mb-3 bg-transparent text-white border-gold-input" placeholder="Your Phone Number" pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" required>
     <button type="submit" class="btn-luxury w-100 py-3 fw-bold">SEND INQUIRY</button>
 </form>
         </div>
