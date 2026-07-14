@@ -3,39 +3,31 @@ import requests
 from datetime import datetime
 from flask import send_from_directory
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
-# Bot 1: Values Vercel ke dashboard se uthayi jayengi (Main Production Bot)
-TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
-CHAT_ID = os.environ.get('CHAT_ID')
+# Sirf Naya Telegram Bot (Vercel ENV: TELEGRAM_TOKEN_2 aur CHAT_ID_2)
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN_2')
+CHAT_ID = os.environ.get('CHAT_ID_2')
 
-# Bot 2: Tumhara naya Personal Test Bot (Vercel ENV se aayega)
-BOT_TOKEN_2 = os.environ.get('TELEGRAM_TOKEN_2')
-CHAT_ID_2 = os.environ.get('CHAT_ID_2')
+# Gmail Credentials (Vercel ENV se aayenge)
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
+SENDER_APP_PASSWORD = os.environ.get('SENDER_APP_PASSWORD')
 
-# Telegram Notification Engine (Multi-Bot Setup)
+# Telegram Notification Engine (Single Bot Setup)
 def send_telegram_msg(data):
-    # Dono bots ki list
-    bots = [
-        {"token": TELEGRAM_TOKEN, "chat_id": CHAT_ID},
-        {"token": BOT_TOKEN_2, "chat_id": CHAT_ID_2}
-    ]
-    
-    # Message ka format
-    text = f"🏔️ New Lead Alert!\n\n👤 Name: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
-    
-    # Loop chala kar dono bots ko parallel message bhejna
-    for bot in bots:
-        # Check karna ki token available hai (agar Vercel env missing ho toh error na aaye)
-        if bot["token"] and bot["chat_id"]:
-            url = f"https://api.telegram.org/bot{bot['token']}/sendMessage"
-            payload = {"chat_id": bot["chat_id"], "text": text}
-            try:
-                # Timeout 5 seconds rakha hai taaki page load na atke
-                requests.post(url, json=payload, timeout=5)
-            except Exception as e:
-                print(f"Telegram Error for bot {bot['token'][:10]}... :", e)
+    if TELEGRAM_TOKEN and CHAT_ID:
+        text = f"🏔️ New Lead Alert!\n\n👤 Name: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        payload = {"chat_id": CHAT_ID, "text": text}
+        try:
+            # Timeout 5 seconds rakha hai taaki page load na atke
+            requests.post(url, json=payload, timeout=5)
+        except Exception as e:
+            print(f"Telegram Error: {e}")
 
 # Ye route Google ko sitemap dikhayega
 @app.route('/sitemap.xml')
@@ -77,13 +69,32 @@ def submit():
         # Form se data nikalna
         lead_data = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "name": request.form.get('name'),
-            "phone": request.form.get('phone'),
-            "package": request.form.get('package')
+            "name": request.form.get('name', 'N/A'),
+            "phone": request.form.get('phone', 'N/A'),
+            "package": request.form.get('package', 'N/A')
         }
         
-        # Telegram par message bhejna
+        # 1. Sirf Naye Telegram Bot par message bhejna
         send_telegram_msg(lead_data)
+        
+        # 2. Gmail par message bhejna
+        if SENDER_EMAIL and SENDER_APP_PASSWORD:
+            try:
+                info_text = f"👤 Name: {lead_data['name']}\n📞 Phone: {lead_data['phone']}\n🎒 Package: {lead_data['package']}\n⏰ Time: {lead_data['timestamp']}"
+                
+                email_msg = MIMEMultipart()
+                email_msg['From'] = SENDER_EMAIL
+                email_msg['To'] = SENDER_EMAIL # Aapko apni mail par alert chahiye
+                email_msg['Subject'] = f"New Lead: {lead_data['name']} ({lead_data['phone']})"
+                email_msg.attach(MIMEText(info_text, 'plain'))
+                
+                server = smtplib.SMTP('smtp.gmail.com', 587)
+                server.starttls()
+                server.login(SENDER_EMAIL, SENDER_APP_PASSWORD)
+                server.sendmail(SENDER_EMAIL, SENDER_EMAIL, email_msg.as_string())
+                server.quit()
+            except Exception as e:
+                print(f"Gmail Error: {e}")
         
         # Premium Success Page
         return """
