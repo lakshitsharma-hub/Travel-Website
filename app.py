@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import send_from_directory
 import os
 import smtplib
@@ -20,11 +20,17 @@ SENDER_APP_PASSWORD = os.environ.get('SENDER_APP_PASSWORD')
 # Telegram Notification Engine (Single Bot Setup)
 def send_telegram_msg(data):
     if TELEGRAM_TOKEN and CHAT_ID:
-        text = f"🏔️ New Lead Alert!\n\n👤 Name: {data['name']}\n📞 Phone: {data['phone']}\n🎒 Package: {data['package']}\n⏰ Time: {data['timestamp']}"
+        text = (
+            f"🏔️ *New Lead Alert!*\n\n"
+            f"👤 *Name:* {data['name']}\n"
+            f"📞 *Phone:* {data['phone']}\n"
+            f"🎒 *Package:* {data['package']}\n"
+            f"⏰ *Time (IST):* {data['timestamp']}\n\n"
+            f"⚡ *Action Required:* Please contact the client at the earliest to confirm their requirements."
+        )
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-        payload = {"chat_id": CHAT_ID, "text": text}
+        payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "Markdown"}
         try:
-            # Timeout 5 seconds rakha hai taaki page load na atke
             requests.post(url, json=payload, timeout=5)
         except Exception as e:
             print(f"Telegram Error: {e}")
@@ -66,25 +72,36 @@ def robots_txt():
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
+        # Vercel UTC time ko IST (+05:30) me convert karna
+        ist_now = datetime.utcnow() + timedelta(hours=5, minutes=30)
+        formatted_time = ist_now.strftime("%d %b %Y, %I:%M %p")
+        
         # Form se data nikalna
         lead_data = {
-            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "timestamp": formatted_time,
             "name": request.form.get('name', 'N/A'),
             "phone": request.form.get('phone', 'N/A'),
             "package": request.form.get('package', 'N/A')
         }
         
-        # 1. Sirf Naye Telegram Bot par message bhejna
+        # 1. Telegram par message bhejna
         send_telegram_msg(lead_data)
         
         # 2. Gmail par message bhejna
         if SENDER_EMAIL and SENDER_APP_PASSWORD:
             try:
-                info_text = f"👤 Name: {lead_data['name']}\n📞 Phone: {lead_data['phone']}\n🎒 Package: {lead_data['package']}\n⏰ Time: {lead_data['timestamp']}"
+                info_text = (
+                    f"🏔️ New Lead Alert!\n\n"
+                    f"👤 Name: {lead_data['name']}\n"
+                    f"📞 Phone: {lead_data['phone']}\n"
+                    f"🎒 Package: {lead_data['package']}\n"
+                    f"⏰ Time (IST): {lead_data['timestamp']}\n\n"
+                    f"⚡ Action Required: Please contact the client at the earliest to confirm their requirements."
+                )
                 
                 email_msg = MIMEMultipart()
                 email_msg['From'] = SENDER_EMAIL
-                email_msg['To'] = SENDER_EMAIL # Aapko apni mail par alert chahiye
+                email_msg['To'] = SENDER_EMAIL 
                 email_msg['Subject'] = f"New Lead: {lead_data['name']} ({lead_data['phone']})"
                 email_msg.attach(MIMEText(info_text, 'plain'))
                 
@@ -112,7 +129,7 @@ def submit():
             </head>
             <body>
                 <h1>Thank You!</h1>
-                <p>Your premium experience request has been received.</p>
+                <p>Your personalized travel request has been received.</p>
                 <p>Our local expert will contact you shortly.</p>
                 <a href="/" class="btn">&larr; Back to Home</a>
             </body>
