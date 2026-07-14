@@ -17,21 +17,24 @@ CHAT_ID = os.environ.get('CHAT_ID_2')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
 SENDER_APP_PASSWORD = os.environ.get('SENDER_APP_PASSWORD')
 
-# Telegram Notification Engine (Single Bot Setup)
+# Telegram Notification Engine (Bulletproof Setup)
 def send_telegram_msg(data):
     if TELEGRAM_TOKEN and CHAT_ID:
+        # Markdown hata diya taaki kisi bhi symbol (+, -) se message block na ho
         text = (
-            f"🏔️ *New Lead Alert!*\n\n"
-            f"👤 *Name:* {data['name']}\n"
-            f"📞 *Phone:* {data['phone']}\n"
-            f"🎒 *Package:* {data['package']}\n"
-            f"⏰ *Time (IST):* {data['timestamp']}\n\n"
-            f"⚡ *Action Required:* Please contact the client at the earliest to confirm their requirements."
+            f"🏔️ New Lead Alert!\n\n"
+            f"👤 Name: {data['name']}\n"
+            f"📞 Phone: {data['phone']}\n"
+            f"📍 Destination: {data['destination']}\n"
+            f"⏰ Time (IST): {data['timestamp']}\n\n"
+            f"⚡ Action Required: Please contact the client at the earliest to confirm their requirements."
         )
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-        payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "Markdown"}
+        payload = {"chat_id": CHAT_ID, "text": text} # Parse mode removed
         try:
-            requests.post(url, json=payload, timeout=5)
+            res = requests.post(url, json=payload, timeout=5)
+            if res.status_code != 200:
+                print(f"Telegram API Rejected: {res.text}")
         except Exception as e:
             print(f"Telegram Error: {e}")
 
@@ -76,12 +79,12 @@ def submit():
         ist_now = datetime.utcnow() + timedelta(hours=5, minutes=30)
         formatted_time = ist_now.strftime("%d %b %Y, %I:%M %p")
         
-        # Form se data nikalna
+        # Form se data nikalna (New UI ke hisab se destination add kiya)
         lead_data = {
             "timestamp": formatted_time,
-            "name": request.form.get('name', 'N/A'),
-            "phone": request.form.get('phone', 'N/A'),
-            "package": request.form.get('package', 'N/A')
+            "name": request.form.get('name', request.form.get('FULL NAME', 'N/A')),
+            "phone": request.form.get('phone', request.form.get('PHONE', 'N/A')),
+            "destination": request.form.get('destination', request.form.get('package', 'N/A'))
         }
         
         # 1. Telegram par message bhejna
@@ -91,11 +94,11 @@ def submit():
         if SENDER_EMAIL and SENDER_APP_PASSWORD:
             try:
                 info_text = (
-                    f"🏔️ New Lead Alert!\n\n"
+                    f"🏔️ New Lead Alert For All Himachal Yatra !\n\n"
                     f"👤 Name: {lead_data['name']}\n"
                     f"📞 Phone: {lead_data['phone']}\n"
-                    f"🎒 Package: {lead_data['package']}\n"
-                    f"⏰ Time (IST): {lead_data['timestamp']}\n\n"
+                    f"📍 Destination: {lead_data['destination']}\n"
+                    f"⏰ Time : {lead_data['timestamp']}\n\n"
                     f"⚡ Action Required: Please contact the client at the earliest to confirm their requirements."
                 )
                 
@@ -136,6 +139,5 @@ def submit():
         </html>
         """
 
-# Vercel entry point
 if __name__ == '__main__':
     app.run(debug=True)
