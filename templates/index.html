@@ -542,7 +542,7 @@ html, body {
                             </div>
                             <div class="col-md-6">
                                 <label class="small fw-bold text-uppercase">Phone</label>
-                                <input type="tel" name="phone" class="form-control" required>
+                                <input type="tel" name="phone" class="form-control" pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" required>
                             </div>
                             <div class="col-md-12">
                                 <label class="small fw-bold text-uppercase">Destination</label>
