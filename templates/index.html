@@ -400,21 +400,28 @@ html, body {
             <p class="text-white-50">Handpicked trails for the discerning traveler.</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <!-- CARD 1: DELHI TO KULLU MANALI START (Line 403) -->
+        <a href="/delhi-to-kullu-manali" class="text-decoration-none text-white d-block" style="height: 100%;">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100" style="cursor: pointer; width: 100%;">
                 <div class="premium-card">
                     <div class="card-img-wrapper">
-    <div class="destination-slideshow" id="manali-slideshow">
-        <img src="{{ url_for('static', filename='manali-1.jpeg') }}" class="slide active" alt="Manali Village View" fetchpriority="high">
-        <img src="{{ url_for('static', filename='manali-3.jpg') }}" class="slide" alt="Paragliding in Manali" loading="lazy">
-        <img src="{{ url_for('static', filename='manali-4.jpg') }}" class="slide" alt="Hidimba Mata Temple Manali" loading="lazy">
-    </div>
-</div>
-                    <h4 class="fw-bold gold-text">Celestial Manali</h4>
-                    <p class="small opacity-75">Private boutique stays, Riverside dining, Hidden waterfalls.</p>
-                    <hr class="border-secondary">
-                    <p class="fw-bold mb-0" style="color: #D4AF37;">Explore Boutique Stays &rarr;</p>
+                        <div class="destination-slideshow" id="manali-slideshow">
+                            <img src="{{ url_for('static', filename='manali-1.jpeg') }}" class="slide active" alt="Manali Village View" fetchpriority="high">
+                            <img src="{{ url_for('static', filename='manali-3.jpg') }}" class="slide" alt="Paragliding in Manali" loading="lazy">
+                            <img src="{{ url_for('static', filename='manali-4.jpg') }}" class="slide" alt="Hidimba Mata Temple Manali" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <h4 class="fw-bold gold-text">Celestial Manali</h4>
+                        <p class="small opacity-75">Private boutique stays, Riverside dining, Hidden waterfalls.</p>
+                        <hr class="border-secondary">
+                        <!-- Text link par bhi double protection -->
+                        <a href="/delhi-to-kullu-manali" class="fw-bold mb-0 text-decoration-none" style="color: #D4AF37;">Explore Boutique Stays &rarr;</a>
+                    </div>
                 </div>
             </div>
+        </a>
+        <!-- CARD 1 END (Line 417) -->
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="premium-card">
                     <div class="destination-slideshow" id="spiti-slideshow">
