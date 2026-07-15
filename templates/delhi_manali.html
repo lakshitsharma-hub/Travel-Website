@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Sabse Zaroori SEO Tags (Exact Keyword Include Kiya Hai) -->
     <title>Delhi to Kullu Manali Premium Tour Packages | All Himachal Yatra</title>
     <meta name="description" content="Book curated Delhi to Kullu Manali tour packages. Experience premium boutique stays, local Himachali authentic food, hidden waterfalls, and safe mountain driving.">
     
-    <!-- Bootstrap CSS (Tumhari site par already link hogi, isko apne base template ke hisaab se adjust kar lena) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="canonical" href="https://www.allhimachalyatra.com/delhi-to-kullu-manali" />
@@ -16,27 +14,25 @@
         .gold-text { color: #D4AF37; }
         .gold-border { border: 1px solid #D4AF37; }
         .bg-gold-light { background-color: rgba(212, 175, 55, 0.1); }
-        .hero-section {
-            background: linear-gradient(rgba(5, 10, 18, 0.8), rgba(5, 10, 18, 0.8)), url('/static/manali-hero.jpg') center/cover;
-            padding: 100px 0;
-        }
+        /* Accordion Custom Styling for Dark Theme */
+        .accordion-button:focus { box-shadow: none; }
+        .accordion-button:not(.collapsed) { background-color: #D4AF37 !important; color: #050a12 !important; }
+        .accordion-button::after { filter: invert(1); }
+        .accordion-button:not(.collapsed)::after { filter: invert(0); }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION (H1 Tag for Main SEO Keyword) -->
-    <header class="hero-section text-center">
+    <header class="hero-section text-center" style="background: linear-gradient(rgba(5, 10, 18, 0.7), rgba(5, 10, 18, 0.9)), url('{{ url_for('static', filename='manali-1.jpeg') }}') center center / cover no-repeat; padding: 120px 0;">
         <div class="container">
-            <!-- Exact Keyword in H1 -->
             <h1 class="display-4 fw-bold gold-text mb-4">Delhi to Kullu Manali</h1>
             <p class="lead text-light mb-5">Escape the city chaos. Experience curated road trips, premium boutique stays, and authentic Himachali hospitality.</p>
-            <a href="https://wa.me/917018198370" class="btn btn-lg gold-border gold-text px-5 py-3 text-decoration-none" style="background: rgba(0,0,0,0.5);">
+            <a href="https://wa.me/917018198370" class="btn btn-lg gold-border gold-text px-5 py-3 text-decoration-none" style="background: rgba(0,0,0,0.5); transition: 0.3s;">
                 Customize Your Trip
             </a>
         </div>
     </header>
 
-    <!-- ROUTE & PRACTICAL INFO (H2 Tag - High SEO Value) -->
     <section class="py-5">
         <div class="container">
             <h2 class="text-center gold-text mb-5">The Journey: Delhi to Kullu Manali</h2>
@@ -63,63 +59,117 @@
         </div>
     </section>
 
-    <!-- CURATED ITINERARY (Keeps users reading longer) -->
     <section class="py-5 bg-dark">
         <div class="container">
-            <h2 class="text-center gold-text mb-5">Our Signature 4-Day Itinerary</h2>
+            <h2 class="text-center gold-text mb-2">Our Signature 4-Day Itinerary</h2>
+            <p class="text-center text-muted mb-5">Carefully crafted for a perfect blend of adventure, culture, and relaxation.</p>
             
-            <div class="row mb-4 align-items-center">
+            <div class="row mb-5 align-items-start">
                 <div class="col-md-3 text-md-end">
                     <h4 class="gold-text">Day 1: The Ascent</h4>
                 </div>
                 <div class="col-md-9 border-start border-warning ps-4">
-                    <h5>Arrival & Acclimatization</h5>
-                    <p class="text-muted">Overnight journey from Delhi. Check into a premium boutique stay in Kullu/Manali. Relax by the riverside, enjoy local authentic cuisine, and breathe in the fresh pine air.</p>
+                    <h5>Arrival & Riverside Retreat</h5>
+                    <p class="text-light opacity-75">After a scenic overnight or day drive from Delhi, you will enter the majestic Kullu Valley. Check into a handpicked premium boutique stay in Kullu or Manali. Spend your evening relaxing by the Beas river, enjoying a traditional Himachali dinner, and breathing in the fresh pine-scented air to acclimatize to the altitude.</p>
                 </div>
             </div>
 
-            <div class="row mb-4 align-items-center">
+            <div class="row mb-5 align-items-start">
                 <div class="col-md-3 text-md-end">
-                    <h4 class="gold-text">Day 2: Solang Valley</h4>
+                    <h4 class="gold-text">Day 2: Peak Adventure</h4>
                 </div>
                 <div class="col-md-9 border-start border-warning ps-4">
-                    <h5>Adventure Awaits</h5>
-                    <p class="text-muted">Head to Solang Valley for paragliding and snow activities. Evening stroll through Old Manali's vibrant cafes and heritage pathways.</p>
+                    <h5>Solang Valley & Atal Tunnel</h5>
+                    <p class="text-light opacity-75">Get ready for high-altitude thrills. Head to Solang Valley for paragliding and snow activities. We will then drive through the engineering marvel, Atal Tunnel (Rohtang), to catch a glimpse of the stark, beautiful landscapes of Sissu in the Lahaul Valley. Return for a vibrant evening stroll through Old Manali's iconic cafes.</p>
                 </div>
             </div>
 
-            <div class="row mb-4 align-items-center">
+            <div class="row mb-5 align-items-start">
                 <div class="col-md-3 text-md-end">
                     <h4 class="gold-text">Day 3: Local Heritage</h4>
                 </div>
                 <div class="col-md-9 border-start border-warning ps-4">
-                    <h5>Temples & Trails</h5>
-                    <p class="text-muted">Visit the sacred Hadimba Temple surrounded by cedar forests. Experience a curated heritage walk and explore hidden waterfalls off the tourist map.</p>
+                    <h5>Temples, Trails & Naggar Castle</h5>
+                    <p class="text-light opacity-75">Immerse yourself in local culture. Visit the sacred wooden Hadimba Temple surrounded by ancient cedar forests. Later, take a curated heritage drive to Naggar Castle and the Roerich Art Gallery, experiencing the royal history of the Kullu region, ending the day by discovering hidden local waterfalls.</p>
                 </div>
             </div>
 
-            <div class="row mb-4 align-items-center">
+            <div class="row mb-5 align-items-start">
                 <div class="col-md-3 text-md-end">
                     <h4 class="gold-text">Day 4: The Return</h4>
                 </div>
                 <div class="col-md-9 border-start border-warning ps-4">
-                    <h5>Kullu Shawls & Departure</h5>
-                    <p class="text-muted">Shop for authentic Kullu shawls and souvenirs. Begin the descent back to Delhi with unforgettable Himalayan memories.</p>
+                    <h5>Kullu Souvenirs & Departure</h5>
+                    <p class="text-light opacity-75">After a hearty breakfast, explore the local markets. Shop for authentic Kullu shawls, hand-woven caps, and local handicrafts. If time permits, we can take a quick detour for river rafting in Kullu before beginning the smooth descent back to Delhi with unforgettable Himalayan memories.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHY CHOOSE US (Trust Building) -->
+    <section class="py-5" style="background-color: #050a12;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-5" style="color: #D4AF37; font-family: 'Playfair Display', serif;">Frequently Asked Questions</h2>
+                    
+                    <div class="accordion" id="routeFaq">
+                        
+                        <div class="accordion-item bg-transparent border-0 mb-3">
+                            <h2 class="accordion-header" id="faqOne">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaqOne" style="background-color: rgba(212, 175, 55, 0.1); color: #D4AF37; border: 1px solid #D4AF37; border-radius: 8px;">
+                                    1. Is it safe to travel from Delhi to Manali at night?
+                                </button>
+                            </h2>
+                            <div id="collapseFaqOne" class="accordion-collapse collapse" data-bs-parent="#routeFaq">
+                                <div class="accordion-body text-white" style="border-left: 2px solid #D4AF37; margin-top: 10px; margin-left: 10px;">
+                                    Yes, it is generally safe. However, mountain driving requires expertise. Our premium packages include highly experienced local Himachali drivers who are well-versed with the terrain, ensuring a safe and smooth overnight journey.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-0 mb-3">
+                            <h2 class="accordion-header" id="faqTwo">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaqTwo" style="background-color: rgba(212, 175, 55, 0.1); color: #D4AF37; border: 1px solid #D4AF37; border-radius: 8px;">
+                                    2. Will I see snow in Manali?
+                                </button>
+                            </h2>
+                            <div id="collapseFaqTwo" class="accordion-collapse collapse" data-bs-parent="#routeFaq">
+                                <div class="accordion-body text-white" style="border-left: 2px solid #D4AF37; margin-top: 10px; margin-left: 10px;">
+                                    If you travel between December and March, you are very likely to experience live snowfall. During other months, you can always find snow at high-altitude points like Rohtang Pass (subject to opening), Solang Valley, or near the Atal Tunnel in Sissu.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-0 mb-3">
+                            <h2 class="accordion-header" id="faqThree">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaqThree" style="background-color: rgba(212, 175, 55, 0.1); color: #D4AF37; border: 1px solid #D4AF37; border-radius: 8px;">
+                                    3. What is the best route from Delhi to Manali?
+                                </button>
+                            </h2>
+                            <div id="collapseFaqThree" class="accordion-collapse collapse" data-bs-parent="#routeFaq">
+                                <div class="accordion-body text-white" style="border-left: 2px solid #D4AF37; margin-top: 10px; margin-left: 10px;">
+                                    The most popular and scenic route is via NH44 and NH205 (Delhi -> Ambala -> Chandigarh -> Mandi -> Kullu -> Manali). The roads are mostly excellent, offering beautiful views as you enter the valleys of Himachal.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-5 text-center">
         <div class="container">
             <h2 class="gold-text mb-4">Why Book With Us?</h2>
-            <p class="lead mb-5" style="max-width: 800px; margin: 0 auto;">We are local experts. Forget crowded buses and standard hotels. We provide handpicked boutique stays, safe experienced mountain drivers, and 24/7 on-ground support.</p>
-            <a href="https://wa.me/917018198370" class="btn btn-lg" style="background-color: #25D366; color: white;">
+            <p class="lead mb-5 text-light opacity-75" style="max-width: 800px; margin: 0 auto;">We are local experts. Forget crowded buses and standard hotels. We provide handpicked boutique stays, safe experienced mountain drivers, and 24/7 on-ground support to make your Himalayan journey flawless.</p>
+            <a href="https://wa.me/917018198370" class="btn btn-lg" style="background-color: #25D366; color: white; font-weight: bold; border-radius: 30px; padding: 12px 35px;">
                 Chat on WhatsApp Now
             </a>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
