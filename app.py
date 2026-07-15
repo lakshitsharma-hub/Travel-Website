@@ -67,6 +67,10 @@ def dham_blog():
 def top_routes_blog():
     return render_template('top-10-routes.html')
 
+@app.route('/delhi-to-kullu-manali')
+def delhi_manali():
+    return render_template('delhi_manali.html') # Naya HTML page
+
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(os.getcwd(), 'robots.txt')
